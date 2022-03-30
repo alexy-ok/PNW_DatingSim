@@ -4,12 +4,14 @@
 # name of the character.
 
 define b = Character("Bord")
-
+define p = Character("Peng")
 
 # The game starts here.
 
 label start:
-
+    $ inv = []
+    $ bordAffectionMeter = 0
+    $ pengAffectionMeter = 0
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
@@ -25,8 +27,15 @@ label start:
     # These display lines of dialogue.
 
     b "Why he ourple?"
-
-
+    menu:
+        "buy roober":
+            b "thank you for your purchase"
+            $ inv.append("roobeer")
+            $ bordAffectionMeter += 1
+            b "you have [inv[0]]"
+            b "meter is [bordAffectionMeter]"
+        "no":
+            b "oh"
     # This ends the game.
 
     return

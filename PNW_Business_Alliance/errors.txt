@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 17: end of line expected.
-    scene bg SammamishFront.png
-                           ^
+File "game/script.rpy", line 34: invalid syntax
+    bordAffectionMeter ++
+    
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Mon Mar 28 21:56:02 2022
+Tue Mar 29 20:43:47 2022
