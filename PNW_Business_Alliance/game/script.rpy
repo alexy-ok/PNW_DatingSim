@@ -50,20 +50,21 @@ label scene1:
     "It's my first time at a FIRST event, I wonder what teams are competing today"
     "*Thud*"
     show hidden placeholder
+    with dissolve
     "Someone""Hey, watch where you're going!"
     menu:
         "Sorry, I didn't see you there":
             "Just keep an eye out, okay? It can get pretty dangerous here."
             hide hidden placeholder
             show placeholder mascot
-            with fade
+            with dissolve
             "By the way, my name is , feel free to come say hi in the pits if you have a moment."
 
         "Why don't you watch where YOU'RE going!":
             "Oh, so that’s how it’s going to be? Watch your step, don’t want you hitting our robot."
             hide hidden placeholder
             show placeholder mascot
-            with fade
+            with dissolve
             "My name’s , let's hope our next encounter goes better."
     A "Attention, the mascot fair will start momentarily"
 
