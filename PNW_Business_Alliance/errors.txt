@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 44: expected ':' not found.
-    label scene1
-                ^
+File "game/script.rpy", line 91: expected menuitem
+    jump bordOurple
+    ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sat Apr  2 10:34:32 2022
+Sun Jun  5 14:16:58 2022

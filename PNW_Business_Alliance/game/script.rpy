@@ -22,67 +22,80 @@ label start:
             $ pronounsObj = "him"
             $ pronounsPos = "his"
             $ adjPos = "his"
-            jump scene1
+            jump ParkingLot
         "she/her":
             $ pronounsSub= "she"
             $ pronounsObj = "her"
             $ pronounsPos = "hers"
             $ adjPos = "her"
-            jump scene1
+            jump ParkingLot
         "they/them":
             $ pronounsSub= "they"
             $ pronounsObj = "them"
             $ pronounsPos = "theirs"
             $ adjPos = "their"
-            jump scene1
+            jump ParkingLot
         "other":
             call OtherPronounSetter
-            jump scene1
+            jump ParkingLot
+# ^ Doesn't need tweaking
 label OtherPronounSetter:
     $pronounsSub = renpy.input("please enter your subject pronouns (he, she, they, etc.)",default=u'', allow=None, exclude=None, length=None, with_none=None, pixel_width=None, screen=u'input', mask=None)
     $pronounsObj = renpy.input("please enter your object pronouns (him, her, them, etc.)",default=u'', allow=None, exclude=None, length=None, with_none=None, pixel_width=None, screen=u'input', mask=None)
     $adjPos = renpy.input("please enter your possesive adjectives (his, her, their, etc.)",default=u'', allow=None, exclude=None, length=None, with_none=None, pixel_width=None, screen=u'input', mask=None)
     $pronounsPos = renpy.input("please enter your possesive pronouns (his, hers, theirs, etc.)",default=u'', allow=None, exclude=None, length=None, with_none=None, pixel_width=None, screen=u'input', mask=None)
-
-label scene1:
+    jump ParkingLot
+# ^ Doesn't need tweaking
+label ParkingLot:
     scene sammamish
 
     "It's my first time at a FIRST event, I wonder what teams are competing today"
     "*Thud*"
     show hidden placeholder
     with dissolve
-    "Someone""Hey, watch where you're going!"
+    "unknown""Hey, watch where you're going!"
     menu:
         "Sorry, I didn't see you there":
-            "Just keep an eye out, okay? It can get pretty dangerous here."
+            "unknown""Just keep an eye out, okay? It can get pretty dangerous here."
             hide hidden placeholder
             show placeholder mascot
             with dissolve
             "By the way, my name is , feel free to come say hi in the pits if you have a moment."
-
+            hide placeholder mascot
         "Why don't you watch where YOU'RE going!":
-            "Oh, so that’s how it’s going to be? Watch your step, don’t want you hitting our robot."
+            "unknown""Oh, so that’s how it’s going to be? Watch your step, don’t want you hitting our robot."
             hide hidden placeholder
             show placeholder mascot
             with dissolve
             "My name’s , let's hope our next encounter goes better."
+            hide placeholder mascot
+
+
+            "There you are!"
+
+    "Teammate""Everyone's looking for you, let's head down to the pits"
+
+label PitsIntro:
+    "Teammate""Hey everyone, I found [pronounsObj]!"
+    "Teammate 2""Great"
+    "name""We were almost worried that you got lost or something"
+
+label mascotfair:
     A "Attention, the mascot fair will start momentarily"
 
 
     menu:
         "Look around the school":
-            "The FIRST event splits the school into a few parts"
+            "The FIRST event splits the school into several sections"
             "The Pits are located in the main area, this is where teams can work on their bots"
             "The Field and Stands are in the main gym, these are where robots compete"
             "Items,food, and drinks are all sold at the Concession stand"
             "The outside area is where you can socialize and eat lunch"
             "Finally the quiet room is accessed by the pause button, this is where you can chill without affecting the time"
-    jump bordOurple
 
 
 
 label bordOurple:
-    # These display lines of dialogue.
     show bord at left
     b "Why he ourple?"
     menu:
