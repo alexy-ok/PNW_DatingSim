@@ -1,8 +1,9 @@
 # name of the character.
 
-define b = Character("Bord")
-define p = Character("Peng")
-define A = Character("Announcer")
+define Ann = Character("Announcer")
+define 948 = Character("Sparky")
+define 3786 = Character("Charlie")
+define 6696 = Character("Corbin")
 default pronounsSub = ""
 default pronounsPos = ""
 default pronounsObj = ""
@@ -14,7 +15,7 @@ label start:
     $ inv = []
     $ bordAffectionMeter = 0
     $ pengAffectionMeter = 0
-
+    $ goneToPits = false
     "Before we start the game, how would you like to be referred to?"
     menu:
         "he/him":
@@ -37,7 +38,7 @@ label start:
             jump ParkingLot
         "other":
             call OtherPronounSetter
-            jump ParkingLot
+        jump ParkingLot
 # ^ Doesn't need tweaking
 label OtherPronounSetter:
     $pronounsSub = renpy.input("please enter your subject pronouns (he, she, they, etc.)",default=u'', allow=None, exclude=None, length=None, with_none=None, pixel_width=None, screen=u'input', mask=None)
@@ -53,17 +54,17 @@ label ParkingLot:
     "*Thud*"
     show hidden placeholder
     with dissolve
-    "unknown""Hey, watch where you're going!"
+    "???""Hey, watch where you're going!"
     menu:
         "Sorry, I didn't see you there":
-            "unknown""Just keep an eye out, okay? It can get pretty dangerous here."
+            "???""Just keep an eye out, okay? It can get pretty dangerous here."
             hide hidden placeholder
             show placeholder mascot
             with dissolve
             "By the way, my name is , feel free to come say hi in the pits if you have a moment."
             hide placeholder mascot
         "Why don't you watch where YOU'RE going!":
-            "unknown""Oh, so that’s how it’s going to be? Watch your step, don’t want you hitting our robot."
+            "???""Oh, so that’s how it’s going to be? Watch your step, don’t want you hitting our robot."
             hide hidden placeholder
             show placeholder mascot
             with dissolve
@@ -74,12 +75,61 @@ label ParkingLot:
             "There you are!"
 
     "Teammate""Everyone's looking for you, let's head down to the pits"
+    jump PitsIntro
 
 label PitsIntro:
     "Teammate""Hey everyone, I found [pronounsObj]!"
     "Teammate 2""Great"
     "name""We were almost worried that you got lost or something"
+label PitsMenu:
 
+    if goneToPits = false:
+        "As you walk around the busy area, you spot different teams' booths"
+        "Where do you want to go?"
+        goneToPits = true
+        menu:
+            "Your pit":
+                jump homePit
+            "NRG 948":
+                jump NRGPit
+            "Saints 1899":
+                jump SaintsPit
+            "Flying Hedgehogs 2989":
+                jump FlyingPit
+            "Chargers 3786":
+                jump ChargersPit
+            "Cardinal Dynamics 6696":
+                jump CardinalPit
+            "Sushi Squad 7461":
+                jump SushiPit
+    elif:
+        "Where do you want to go?"
+        menu:
+            "Your pit":
+                jump homePit
+            "NRG 948":
+                jump NRGPit
+            "Saints 1899":
+                jump SaintsPit
+            "Flying Hedgehogs 2989":
+                jump FlyingPit
+            "Chargers 3786":
+                jump ChargersPit
+            "Cardinal Dynamics 6696":
+                jump CardinalPit
+            "Sushi Squad 7461":
+                jump SushiPit
+            "Exit Pits"
+                jump LocationSelector
+label homePit:
+label NRGPit:
+label SaintsPit:
+label FlyingPit:
+label ChargersPit:
+label CardinalPit:
+label SushiPit:
+label LocationSelector
+#idk if we're using this tbh
 label mascotfair:
     A "Attention, the mascot fair will start momentarily"
 
@@ -95,20 +145,7 @@ label mascotfair:
 
 
 
-label bordOurple:
-    show bord at left
-    b "Why he ourple?"
-    menu:
-        "buy roober":
-            b "thank you for your purchase"
-            $ inv.append("roobeer")
-            $ bordAffectionMeter += 1
-            b "you have [inv[0]]"
-            b "meter is [bordAffectionMeter]"
-        "no":
-            b "oh"
 
-    return
 
 #Credits settings (use call credits to show credits)
 label credits:
@@ -132,7 +169,7 @@ label credits:
     return
 #Credits wording
 init python:
-    credits = ('Writing', 'Alexy' ),('Writing', 'MJ' ), ('Backgrounds', 'Dorktwerp'), ('Sprites and CG', 'Ballclown'), ('GUI', 'Cuddlywad') , ('Programming', 'Alexy'), ('Music', 'Grumblemuck'), ('Music', 'Headwookum')
+    credits = ('Writing', '' ),('Writing', '' ), ('Backgrounds', ''), ('Sprites and CG', ''), ('GUI', '') , ('Programming', ''), ('Music', ''), ('Music', '')
     credits_s = "{size=80}Credits\n\n"
     c1 = ''
     for c in credits:
